@@ -1,0 +1,20 @@
+{
+    'name': 'Sales Inheritance',
+    'sequence': -300,
+    'category': 'Sales',
+    'summary': 'Sales Inheritance.',
+    'description': 'A custom Odoo module for Sales Inheritance Task',
+    'author': 'ODOO 1234',
+    'website': 'https://www.odoo.com',
+    'depends': ['base','purchase','contacts'],
+    'data': [
+        'security/ir.model.access.csv',
+        # 'views/sales_order_view.xml',
+        # 'views/project_sales_view.xml',
+        'views/purchase_limit_views.xml',
+        'wizard/error_wizard_view.xml',
+    ],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+}

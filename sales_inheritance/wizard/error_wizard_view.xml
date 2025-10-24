@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="purchase_order_limit_user_wizard" model="ir.ui.view">
+            <field name="name">purchase.order.limit.user.wizard</field>
+            <field name="model">error.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Purchase Limit Exceeded">
+                    <strong>
+                        The Current Purchase Exceeds the Purchase Limit. Continue?
+                    </strong>
+                    <footer>
+                        <button name="action_confirm_button" string="Confirm" type="object" />
+                        <button name="action_cancel_button" string="Cancel" type="object"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

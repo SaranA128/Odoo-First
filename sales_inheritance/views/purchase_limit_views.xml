@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="res_partner_form_inherit_limit" model="ir.ui.view">
+        <field name="name">res.partner.form.purchase.limit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='sales_purchases']//group[@name='purchase']" position="inside">
+                <field name="purchase_limit" widget="monetary"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="purchase_order_form_inherit_limit" model="ir.ui.view">
+        <field name="name">purchase.order.form.inherit.limit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="after">
+                <div class="alert alert-danger text-center o_form_header"
+                     invisible= "purchase_limit_warning == False"
+                     role="alert">
+                    <field name="purchase_limit_warning" class="oe_warning"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
