@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- ======================================groups==================================== -->
+        <record model="ir.module.category" id="module_boda_werk_main">
+            <field name="name">Gogo Restrictions</field>
+            <field name="description">Helps you handle your security.</field>
+            <field name="sequence">10</field>
+        </record>
+
+        <record model="ir.module.category" id="module_boda_werk">
+            <field name="name">Stock Quant</field>
+            <field name="parent_id" ref="stock_backdate.module_boda_werk_main"/>
+            <field name="sequence">10</field>
+        </record>
+
+        <record model="ir.module.category" id="module_boda_pdts">
+            <field name="name">Products</field>
+            <field name="parent_id" ref="stock_backdate.module_boda_werk_main"/>
+            <field name="sequence">10</field>
+        </record>
+
+        <!--         restrict access rights for stock quantity to only restricted users in group_stock_quant_restricted-->
+        <!--        <record id="group_stock_quant_restricted" model="res.groups">-->
+        <!--            <field name="name">Stock Quantity Restricted Users</field>-->
+        <!--            <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />-->
+        <!--            <field name="category_id" ref="stock_backdate.module_boda_werk"/>-->
+        <!--&lt;!&ndash;            ref change, line change&ndash;&gt;-->
+        <!--        </record>-->
+
+        <!--        <record id="stock.access_stock_quant_user" model="ir.model.access">-->
+        <!--            <field name="name">access_stock_quant_user</field>-->
+        <!--            <field name="model_id" ref="stock.model_stock_quant"/>-->
+        <!--            <field name='group_id' eval="ref('stock_backdate.group_stock_quant_restricted')" />-->
+        <!--            <field name="perm_read" eval="True" />-->
+        <!--            <field name="perm_write" eval="True" />-->
+        <!--            <field name="perm_create" eval="True" />-->
+        <!--            <field name="perm_unlink" eval="False" />-->
+        <!--        </record>-->
+
+        <!-- restrict access rights for the product template to only restricted users in  group_product_template_restricted -->
+        <record id="group_product_template_restricted" model="res.groups">
+            <field name="name">Product Restricted Users</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <!--            <field name="category" ref="module_boda_pdts"/>-->
+        </record>
+
+        <!--        <record id="account.access_product_template_account_manager" model="ir.model.access">-->
+        <!--            <field name='group_id' eval="ref('stock_backdate.group_product_template_restricted')" />-->
+        <!--        </record>-->
+        <!--        <record id="mrp.access_product_template_mrp_manager" model="ir.model.access">-->
+        <!--            <field name='group_id' eval="ref('stock_backdate.group_product_template_restricted')" />-->
+        <!--        </record>-->
+        <!--        <record id="purchase.access_product_template_purchase_manager" model="ir.model.access">-->
+        <!--            <field name='group_id' eval="ref('stock_backdate.group_product_template_restricted')" />-->
+        <!--        </record>-->
+        <!--        <record id="sale.access_product_template_sale_manager" model="ir.model.access">-->
+        <!--            <field name='group_id' eval="ref('stock_backdate.group_product_template_restricted')" />-->
+        <!--        </record>-->
+        <!--        <record id="stock.access_product_template_stock_manager" model="ir.model.access">-->
+        <!--            <field name='group_id' eval="ref('stock_backdate.group_product_template_restricted')" />-->
+        <!--        </record>-->
+        <!--        <record id="hr_expense.access_product_template_hr_expense_user" model="ir.model.access">-->
+        <!--            <field name='group_id' eval="ref('stock_backdate.group_product_template_restricted')" />-->
+        <!--        </record>-->
+        <!--        <record id="sale_subscription.access_product_template_sale_subscription_manager" model="ir.model.access">-->
+        <!--            <field name='group_id' eval="ref('stock_backdate.group_product_template_restricted')" />-->
+        <!--        </record>-->
+        <!--        <record id="product.access_product_template_manager" model="ir.model.access">-->
+        <!--            <field name='group_id' eval="ref('stock_backdate.group_product_template_restricted')" />-->
+        <!--        </record>-->
+        <!--        <record id="point_of_sale.access_product_template_pos_manager" model="ir.model.access">-->
+        <!--            <field name='group_id' eval="ref('stock_backdate.group_product_template_restricted')" />-->
+        <!--        </record>-->
+
+        <!-- restrict access rights for product.product to only restricted users in  group_product_product_restricted -->
+        <record id="group_product_product_restricted" model="res.groups">
+            <field name="name">Product Variant Restricted Users</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <!--        <record id="account.access_product_product_account_manager" model="ir.model.access">-->
+        <!--            <field name='group_id' eval="ref('stock_backdate.group_product_product_restricted')" />-->
+        <!--        </record>-->
+        <!--        <record id="mrp.access_product_product_mrp_manager" model="ir.model.access">-->
+        <!--            <field name='group_id' eval="ref('stock_backdate.group_product_product_restricted')" />-->
+        <!--        </record>-->
+        <!--        <record id="purchase.access_product_product_purchase_manager" model="ir.model.access">-->
+        <!--            <field name='group_id' eval="ref('stock_backdate.group_product_product_restricted')" />-->
+        <!--        </record>-->
+        <!--        <record id="sale.access_product_product_sale_manager" model="ir.model.access">-->
+        <!--            <field name='group_id' eval="ref('stock_backdate.group_product_product_restricted')" />-->
+        <!--        </record>-->
+        <!--        <record id="stock.access_product_product_stock_manager" model="ir.model.access">-->
+        <!--            <field name='group_id' eval="ref('stock_backdate.group_product_product_restricted')" />-->
+        <!--        </record>-->
+        <!--        <record id="hr_expense.access_product_product_hr_expense_user" model="ir.model.access">-->
+        <!--            <field name='group_id' eval="ref('stock_backdate.group_product_product_restricted')" />-->
+        <!--        </record>-->
+        <!--&lt;!&ndash;        <record id="sale_subscription.access_product_product_sale_subscription_manager" model="ir.model.access">&ndash;&gt;-->
+        <!--&lt;!&ndash;            <field name='group_id' eval="ref('stock_backdate.group_product_product_restricted')" />&ndash;&gt;-->
+        <!--&lt;!&ndash;        </record>&ndash;&gt;-->
+        <!--        <record id="product.access_product_product_manager" model="ir.model.access">-->
+        <!--            <field name='group_id' eval="ref('stock_backdate.group_product_product_restricted')" />-->
+        <!--        </record>-->
+        <!--        <record id="point_of_sale.access_product_product_pos_manager" model="ir.model.access">-->
+        <!--            <field name='group_id' eval="ref('stock_backdate.group_product_product_restricted')" />-->
+        <!--        </record>-->
+    </data>
+
+</odoo>

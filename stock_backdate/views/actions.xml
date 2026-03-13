@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.actions.server" id="action_backdate_multiple">
+        <field name="name">Backdate Non-Serialized</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="binding_model_id" ref="product.model_product_template"/>
+        <field name="binding_type">action</field>
+        <field name="state">code</field>
+        <field name="code">
+            if records:
+            action = records.action_backdate_non_serialized()
+        </field>
+    </record>
+
+    <!-- <record model="ir.actions.server" id="action_backdate_multiple_serialized">
+     <field name="name">Backdate Serialized</field>
+     <field name="type">ir.actions.server</field>
+     <field name="model_id" ref="product.model_product_template" />
+     <field name="binding_model_id" ref="product.model_product_template" />
+     <field name="state">code</field>
+     <field name="code">
+      if records:
+      action = records.action_backdate_serialized()
+     </field>
+    </record> -->
+</odoo>

@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stock_backdate_wizard,access.stock.backdate.wizard,model_stock_backdate_wizard,,1,1,1,0
+access_product_serial,access.product.serial,model_product_serial,,1,1,1,1
+
+access_multi_stock_backdate_wizard,access.multi.stock.backdate.wizard,model_multi_stock_backdate_wizard,,1,1,1,0
+access_multi_stock_backdate_line,access.multi.stock.backdate.line,model_multi_stock_backdate_line,,1,1,1,1
+
+access_bulk_serial_create_wizard,access.bulk.serial.create.wizard,model_bulk_serial_create_wizard,,1,1,1,0
+access_bulk_serial_create_lines,access.bulk.serial.create.lines,model_bulk_serial_create_lines,,1,1,1,1
+
+access_bulk_serial_create_lines_add,access.bulk.serial.create.lines.add,model_bulk_serial_create_lines_add,,1,1,1,1
+access_bulk_serial_create_lines_exist,access.bulk.serial.create.lines.exist,model_bulk_serial_create_lines_exist,,1,1,1,1
+access_bulk_serial_create_lines_duplicate,access.bulk.serial.create.lines.duplicate,model_bulk_serial_create_lines_duplicate,,1,1,1,1
+

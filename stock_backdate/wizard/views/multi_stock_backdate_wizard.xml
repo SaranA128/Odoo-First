@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_multi_stock_backdate_wizard_form" model="ir.ui.view">
+        <field name="name">multi.stock.backdate.wizard.form</field>
+        <field name="model">multi.stock.backdate.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Multi Stock Backdate">
+                <group>
+                    <group>
+                        <field name="is_serialized" invisible="is_non_serialized == True" readonly="1"/>
+                        <field name="is_non_serialized" invisible="is_serialized == True" readonly="1"/>
+                        <field name="date_today" readonly="1"/>
+                        <field name="back_date"/>
+                    </group>
+                    <group>
+                        <field name="serialized_count" readonly="1"/>
+                        <field name="non_serialized_count" readonly="1"/>
+                    </group>
+                </group>
+                <notebook>
+                    <page string="Products">
+                        <field name="product_lines">
+                            <list editable="bottom" create="1" delete="1">
+                                <field name="product_id" domain="[('tracking','!=', 'serial')]"/>
+                                <field name="qty_today"/>
+                                <field name="date" required="1"/>
+                                <field name="qty_at_backdate"/>
+                                <field name="qty" required="1"/>
+                            </list>
+                        </field>
+                    </page>
+                </notebook>
+                <footer>
+                    <field name="hide_footer" invisible="1"/>
+                    <button string="Backdate All" type="object" name="action_backdate_all" class="btn-primary"
+                            invisible="hide_footer"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" invisible="hide_footer"/>
+                    <button string="Close" class="btn-secondary" special="cancel" invisible="not hide_footer"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
+
+        <!--Changed attrs to invisible-->
+        <!--Changed attrs to readonly-->
+        <!--Changed required="True" to required="1"-->
+        <!--Changed tree to list-->

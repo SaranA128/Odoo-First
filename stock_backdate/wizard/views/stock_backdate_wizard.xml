@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="stock_backdate_wizard_form" model="ir.ui.view">
+        <field name="name">stock.backdate.wizard.form</field>
+        <field name="model">stock.backdate.wizard</field>
+        <field name="mode">primary</field>
+        <field name="priority">25</field>
+        <field name="arch" type="xml">
+            <form string="Stock Backdate Wizard Form">
+                <div class="oe_title">
+                    <label for='product_id'/>
+                    <h1 class="d-flex">
+                        <field name="product_id"/>
+                    </h1>
+                </div>
+                <group>
+                    <group>
+                        <field name="hide_footer" invisible="1"/>
+                        <field name="tracking" invisible="1"/>
+                        <field name="has_serial_numbers" invisible="1"/>
+                        <field name="file_processed" invisible="1"/>
+                        <field name="location_id"/>
+                        <field name="date" required="1"/>
+                        <field name="qty_at_backdate"/>
+                        <field name="lot_id" invisible="tracking != 'lot'" required="tracking == 'lot'"
+                               domain="[('product_id' ,'=' ,product_id)]"/>
+                        <field name="file" filename="filename" invisible="not has_serial_numbers"/>
+                        <field name="qty" invisible="has_serial_numbers" required="not has_serial_numbers"
+                               readonly="has_serial_numbers"/>
+                    </group>
+                    <group>
+                        <field name="today_date"/>
+                        <field name="qty_today"/>
+                        <field name="location_qty_today" invisible="not location_id"/>
+                        <field name="increments" invisible="not has_serial_numbers or hide_footer"/>
+                        <field name="decrements" invisible="not has_serial_numbers or hide_footer"/>
+                    </group>
+                </group>
+                <div invisible="not has_serial_numbers" class="text-warning">
+                    <i>NB: The sheet with serial numbers in the excel file should be named as "Serialized Items"</i>
+                </div>
+                <notebook>
+                    <page string="Serial Numbers" invisible="not has_serial_numbers">
+                        <field name="product_serial_ids">
+                            <list string="Serial Numbers" editable="bottom">
+                                <control>
+                                    <create name="add_product_control" string="Add a serial number"/>
+                                </control>
+                                <field name="name" required="1"/>
+                                <!-- <field name="stoc_quant_id" /> -->
+                                <field name="lot_in_system"/>
+                                <!-- <field name="create_date" /> -->
+                                <field name="operation"/>
+                            </list>
+                        </field>
+                    </page>
+                    <page string="To be Removed" invisible="not has_serial_numbers or hide_footer">
+                        <field name="serials_to_remove">
+                            <list string="Serial Numbers" create="0">
+                                <field name="lot_id" required="1"/>
+                                <field name="date"/>
+                            </list>
+                        </field>
+                    </page>
+                </notebook>
+                <footer>
+                    <button string="Process File" name="action_process_file" type="object" class="btn-success"
+                            data-hotkey="z" invisible="hide_footer or not has_serial_numbers"/>
+                    <button name="action_back_date" string="backdate"
+                            confirm="The stock count at the specified date will be adjusted to the specified quantity"
+                            type="object" class="btn-primary" data-hotkey="q"
+                            invisible="hide_footer"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"
+                            invisible="hide_footer"/>
+                    <button string="Close" class="btn-secondary" special="cancel" data-hotkey="z"
+                            invisible="not hide_footer"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
+
+        <!--Changed attrs to invisible-->
+        <!--Changed attrs to readonly-->
+        <!--Changed required="True" to required="1"-->
+        <!--Changed tree to list-->
